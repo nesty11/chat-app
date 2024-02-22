@@ -10,7 +10,7 @@ const Chat = ({ navigation, route }) => {
 
   return (
     <View style={[styles.container, { backgroundColor: background }]}>
-      <Text>Start chatting now!</Text>
+      <Text style={styles.textChat}>Start chatting now!</Text>
     </View>
   );
 };
@@ -21,6 +21,9 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
   },
+  textChat: {
+    color: "#FFFFFF"
+  }
 });
 
 export default Chat;
