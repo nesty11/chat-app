@@ -3,7 +3,7 @@ import {
   StyleSheet,
   View,
   Text,
-  Button,
+  Image,
   TextInput,
   TouchableOpacity,
   ImageBackground,
@@ -24,12 +24,17 @@ const StartScreen = ({ navigation }) => {
         <Text style={styles.appTitle}>Tech Connect</Text>
         <View style={styles.box}>
           {/* Input username */}
-          <TextInput
-            style={styles.textInput}
-            value={name}
-            onChangeText={setName}
-            placeholder="Type your username here..."
-          />
+          <View style={styles.inputContainer}>
+            <TextInput
+              style={styles.textInput}
+              value={name}
+              onChangeText={setName}
+              placeholder="Type your username here..."
+            />
+            <View style={styles.iconContainer}>
+              <Image source={require("../img/user.png")} style={styles.icon} />
+            </View>
+          </View>
           <View style={styles.bottomContent}>
             <Text style={styles.chooseBgColor}>Choose A Background Color</Text>
             {/* Choose a background color for your chat */}
@@ -82,6 +87,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: "300",
     borderRadius: 20,
+    paddingLeft: 40,
   },
   bgImage: {
     flex: 1,
@@ -143,6 +149,17 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: "600",
     color: "#ffffff",
+  },
+  iconContainer: {
+    position: "absolute",
+    top: 30,
+    left: 5,
+    zIndex: 1,
+  },
+  icon: {
+    width: 24,
+    height: 24,
+    marginHorizontal: 10,
   },
 });
 

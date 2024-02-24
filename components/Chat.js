@@ -1,4 +1,5 @@
-import { useEffect } from "react";
+import { GiftedChat } from "react-native-gifted-chat";
+import { useEffect, useState } from "react";
 import { StyleSheet, View, Text, Button } from "react-native";
 
 const Chat = ({ navigation, route }) => {
