@@ -24,7 +24,7 @@ const StartScreen = ({ navigation }) => {
         <Text style={styles.appTitle}>Tech Connect</Text>
         <View style={styles.box}>
           {/* Input username */}
-          <View style={styles.inputContainer}>
+          <View>
             <TextInput
               style={styles.textInput}
               value={name}
@@ -32,7 +32,7 @@ const StartScreen = ({ navigation }) => {
               placeholder="Type your username here..."
             />
             <View style={styles.iconContainer}>
-              <Image source={require("../img/user.png")} style={styles.icon} />
+              <Image source={require("../img/icon.png")} style={styles.icon} />
             </View>
           </View>
           <View style={styles.bottomContent}>
@@ -153,7 +153,6 @@ const styles = StyleSheet.create({
   iconContainer: {
     position: "absolute",
     top: 30,
-    left: 5,
     zIndex: 1,
   },
   icon: {
