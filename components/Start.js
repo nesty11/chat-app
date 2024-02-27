@@ -72,6 +72,9 @@ const StartScreen = ({ navigation }) => {
             >
               <Text style={styles.buttonText}>Start Chat</Text>
             </TouchableOpacity>
+            {Platform.OS === "android" ? (
+              <KeyboardAvoidingView behavior="height" />
+            ) : null}
             {Platform.OS === "ios" ? (
               <KeyboardAvoidingView behavior="padding" />
             ) : null}
