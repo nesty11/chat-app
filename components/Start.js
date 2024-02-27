@@ -7,6 +7,9 @@ import {
   TextInput,
   TouchableOpacity,
   ImageBackground,
+  KeyboardAvoidingView,
+  Platform,
+  AccessibilityRole,
 } from "react-native";
 
 const StartScreen = ({ navigation }) => {
@@ -55,6 +58,10 @@ const StartScreen = ({ navigation }) => {
             </View>
             {/* Start Chat */}
             <TouchableOpacity
+              accessible={true}
+              accessibilityLabel="More options"
+              accessibilityHint="Let's you choose a different background color"
+              accessibilityRole="button"
               style={[styles.button, styles.touchableOpacityButton]}
               onPress={() => {
                 navigation.navigate("Chat", {
@@ -65,6 +72,9 @@ const StartScreen = ({ navigation }) => {
             >
               <Text style={styles.buttonText}>Start Chat</Text>
             </TouchableOpacity>
+            {Platform.OS === "ios" ? (
+              <KeyboardAvoidingView behavior="padding" />
+            ) : null}
           </View>
         </View>
       </ImageBackground>
