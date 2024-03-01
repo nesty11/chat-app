@@ -25,7 +25,7 @@ const StartScreen = ({ navigation }) => {
         navigation.navigate("Chat", {
           name: name,
           background: background,
-          userID: result.user.uid,
+          id: result.user.uid,
         });
         Alert.alert("Signed in Successfully!");
       })
