@@ -27,7 +27,7 @@ const StartScreen = ({ navigation }) => {
           background: background,
           userID: result.user.uid,
         });
-        Alert.alert("Signed in Successffully!");
+        Alert.alert("Signed in Successfully!");
       })
       .catch((error) => {
         Alert.alert("Unable to sign-in, try again later.");

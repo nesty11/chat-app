@@ -1,7 +1,13 @@
 import { Bubble, GiftedChat } from "react-native-gifted-chat";
 import { useEffect, useState } from "react";
 import { StyleSheet, View, KeyboardAvoidingView, Platform } from "react-native";
-import { collection, addDoc, onSnapshot, query, orderBy } from "firebase/firestore";
+import {
+  collection,
+  addDoc,
+  onSnapshot,
+  query,
+  orderBy,
+} from "firebase/firestore";
 
 const Chat = ({ navigation, route, db }) => {
   const { name, background, id } = route.params;
@@ -56,7 +62,7 @@ const Chat = ({ navigation, route, db }) => {
         renderBubble={renderBubble}
         onSend={(messages) => onSend(messages)}
         user={{
-          _id: 1,
+          _id: id,
         }}
       />
       {Platform.OS === "android" ? (
