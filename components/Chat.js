@@ -21,7 +21,8 @@ const Chat = ({ navigation, route, db, isConnected }) => {
 
   useEffect(() => {
     if (isConnected === true) {
-      //unregister current onSnapshot() listener to avoid registering multiple listeners when useEffect code is re-executed
+      //unregister current onSnapshot() listener to avoid
+      //registering multiple listeners when useEffect code is re-executed
       if (unsubMessages) unsubMessages();
       unsubMessages = null;
 
