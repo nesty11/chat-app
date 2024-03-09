@@ -21,25 +21,19 @@ const StartScreen = ({ navigation }) => {
   const colors = ["#090C08", "#474056", "#8A95A5", "#B9C6AE"];
 
   const signInUser = () => {
-    signInAnonymously(auth)
-      .then((result) => {
-        console.log("Here", result);
-        navigation.navigate("Chat", {
-          name: name,
-          background: background,
-          id: result.user.uid,
-        });
-        // Check network connection status before showing the alert
-        NetInfo.fetch().then((state) => {
-          if (state.isConnected) {
-            Alert.alert("Signed in Successfully!");
-          }
-        });
-      })
-      .catch((error) => {
-        console.error("Error signing in:", error);
-        Alert.alert("Unable to sign in, try again later.");
+    signInAnonymously(auth).then((result) => {
+      navigation.navigate("Chat", {
+        name: name,
+        background: background,
+        id: result.user.uid,
       });
+      // Check network connection status before showing the alert
+      NetInfo.fetch().then((state) => {
+        if (state.isConnected) {
+          Alert.alert("Signed in Successfully!");
+        }
+      });
+    });
   };
 
   return (
