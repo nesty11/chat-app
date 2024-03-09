@@ -12,6 +12,7 @@ import {
   Alert,
 } from "react-native";
 import { getAuth, signInAnonymously } from "firebase/auth";
+import NetInfo from "@react-native-community/netinfo";
 
 const StartScreen = ({ navigation }) => {
   const auth = getAuth();
@@ -22,15 +23,22 @@ const StartScreen = ({ navigation }) => {
   const signInUser = () => {
     signInAnonymously(auth)
       .then((result) => {
+        console.log("Here", result);
         navigation.navigate("Chat", {
           name: name,
           background: background,
           id: result.user.uid,
         });
-        Alert.alert("Signed in Successfully!");
+        // Check network connection status before showing the alert
+        NetInfo.fetch().then((state) => {
+          if (state.isConnected) {
+            Alert.alert("Signed in Successfully!");
+          }
+        });
       })
       .catch((error) => {
-        Alert.alert("Unable to sign-in, try again later.");
+        console.error("Error signing in:", error);
+        Alert.alert("Unable to sign in, try again later.");
       });
   };
 
