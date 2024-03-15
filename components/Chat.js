@@ -8,13 +8,37 @@ import {
   query,
   orderBy,
 } from "firebase/firestore";
+import CustomActions from "./CustomActions";
+import MapView from "react-native-maps";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
-const Chat = ({ navigation, route, db, isConnected }) => {
+const Chat = ({ navigation, route, db, isConnected, storage }) => {
   const { name, background, id } = route.params;
   const [messages, setMessages] = useState([]);
   const onSend = (newMessages) => {
     addDoc(collection(db, "messages"), newMessages[0]);
+  };
+
+  const renderCustomActions = (props) => {
+    return <CustomActions storage={storage} {...props} />;
+  };
+
+  const renderCustomView = (props) => {
+    const { currentMessage } = props;
+    if (currentMessage.location) {
+      return (
+        <MapView
+          style={{ width: 150, height: 100, margin: 7 }}
+          region={{
+            latitude: currentMessage.location.latitude,
+            longitude: currentMessage.location.longitude,
+            latitudeDelta: 0.0922,
+            longitudeDelta: 0.0421,
+          }}
+        />
+      );
+    }
+    return null;
   };
 
   let unsubMessages;
@@ -92,6 +116,8 @@ const Chat = ({ navigation, route, db, isConnected }) => {
         messages={messages}
         renderBubble={renderBubble}
         renderInputToolbar={renderInputToolbar}
+        renderActions={renderCustomActions}
+        renderCustomView={renderCustomView}
         onSend={(messages) => onSend(messages)}
         user={{ _id: id }}
       />
