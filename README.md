@@ -100,3 +100,9 @@ Add this to your `firebaseConfig.js` file.
 
   
 👨‍💻 Happy coding!
+
+## Example Screenshots
+
+![Screenshot of Start Page](img/ss2.png)
+![Screenshot of Chat Page](img/ss1.png)
+
